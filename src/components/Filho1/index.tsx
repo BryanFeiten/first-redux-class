@@ -1,4 +1,3 @@
-import { count } from 'console';
 import { useEffect, useState } from 'react';
 
 type receivedParameters = {
@@ -10,18 +9,15 @@ export default function Filho1({onClickPassarValor, value}: receivedParameters) 
   const [count, setCount] = useState(0);
 
   function increaseCount() {
-    setCount(old => ++old);
+    const newCount = count + 1;
+
+    setCount(newCount);
+    onClickPassarValor(newCount);
   }
 
   useEffect(() => {
-    if (value !== count) {
-      setCount(value);
-    }
+    setCount(value);
   }, [value]);
-
-  useEffect(() => {
-    onClickPassarValor(count);
-  }, [count]);
 
   return (
     <>
